@@ -15,8 +15,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
+  authModal,
 }: {
   children: React.ReactNode;
+  authModal: React.ReactNode;
 }) {
   return (
     // Using cn utility to merge tailwind classnames and apply the "Inter" font
@@ -29,7 +31,10 @@ export default function RootLayout({
     >
       {/* Setting the min-height of the body to 100vh and using the top-padding to offset the navbar height */}
       <body className="min-h-screen pt-12 bg-slate-50 antialiased">
+        {/* @ts-expect-error server component */}
         <Navbar />
+
+        {authModal}
         {/* Create a tailwind container with max-width and center it horizontally */}
         <div className="container max-w-7xl mx-auto h-full pt-12">
           {children}
