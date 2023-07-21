@@ -39,6 +39,8 @@ export async function POST(req: Request) {
         subredditId: subreddit.id,
       },
     });
+
+    return new Response(subreddit.name);
   } catch (error) {
     if (error instanceof z.ZodError) {
       return new Response(error.message, { status: 422 });
