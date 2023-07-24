@@ -113,3 +113,5 @@ const Layout = async ({
     </div>
   );
 };
+
+export default Layout;
