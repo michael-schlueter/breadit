@@ -30,6 +30,9 @@ const page = async ({ params }: PageProps) => {
           comments: true,
           subreddit: true,
         },
+        orderBy: {
+          createdAt: "desc",
+        },
         // Only take a specific amount of posts
         take: INFINITE_SCROLLING_PAGINATION_RESULTS,
       },
@@ -39,13 +42,15 @@ const page = async ({ params }: PageProps) => {
   // Returns 404 error if subreddit does not exist
   if (!subreddit) return notFound();
 
-  return <>
-    <h1 className="font-bold text-3xl md:text-4xl h-14">
+  return (
+    <>
+      <h1 className="font-bold text-3xl md:text-4xl h-14">
         r/{subreddit.name}
-    </h1>
-    <MiniCreatePost session={session} />
-    <PostFeed initialPosts={subreddit.posts} subredditName={subreddit.name} />
-  </>;
+      </h1>
+      <MiniCreatePost session={session} />
+      <PostFeed initialPosts={subreddit.posts} subredditName={subreddit.name} />
+    </>
+  );
 };
 
 export default page;
