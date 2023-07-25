@@ -56,16 +56,31 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
         const currentVote = post.votes.find(
           (vote) => vote.userId === session?.user.id
         );
-        
+
         // If it is the last post on the page, provide it with a ref
         if (index === posts.length - 1) {
           return (
             <li key={post.id} ref={ref}>
-              <Post />
+              <Post
+                currentVote={currentVote}
+                votesAmt={votesAmt}
+                commentAmt={post.comments.length}
+                subredditName={post.subreddit.name}
+                post={post}
+              />
             </li>
           );
         } else {
-          return <Post key={post.id} />;
+          return (
+            <Post
+              currentVote={currentVote}
+              votesAmt={votesAmt}
+              commentAmt={post.comments.length}
+              key={post.id}
+              post={post}
+              subredditName={post.subreddit.name}
+            />
+          );
         }
       })}
     </ul>
