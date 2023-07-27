@@ -1,10 +1,10 @@
 "use client";
 
-import { Comment, User } from "@prisma/client";
+import { Comment, User, CommentVote } from "@prisma/client";
+import CommentVotes from "./CommentVote";
 import { FC, useRef, useState } from "react";
 import UserAvatar from "./UserAvatar";
 import { formatTimeToNow } from "@/lib/utils";
-import CommentVote from "./CommentVote";
 import { Button } from "./ui/Button";
 import { MessageSquare } from "lucide-react";
 import { useSession } from "next-auth/react";
@@ -91,7 +91,7 @@ const PostComment: FC<PostCommentProps> = ({
       <p className="text-sm text-zinc-900 mt-2">{comment.text}</p>
 
       <div className="flex gap-2 items-center flex-wrap">
-        <CommentVote
+        <CommentVotes
           commentId={comment.id}
           initialVotesAmt={votesAmt}
           initialVote={currentVote}
@@ -108,46 +108,46 @@ const PostComment: FC<PostCommentProps> = ({
           <MessageSquare className="h-4 w-4 mr-1.5" />
           Reply
         </Button>
+      </div>
 
-        {isReplying ? (
-          <div className="grid w-full gap-1.5">
-            <Label htmlFor="comment">Your comment</Label>
-            <div className="mt-2">
-              <Textarea
-                id="comment"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                rows={1}
-                placeholder="What are your thougts?"
-              />
+      {isReplying ? (
+        <div className="grid w-full gap-1.5">
+          <Label htmlFor="comment">Your comment</Label>
+          <div className="mt-2">
+            <Textarea
+              id="comment"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              rows={1}
+              placeholder="What are your thougts?"
+            />
 
-              <div className="mt-2 flex justify-end gap-2">
-                <Button
-                  tabIndex={-1}
-                  variant="subtle"
-                  onClick={() => setIsReplying(false)}
-                >
-                  Cancel
-                </Button>
-                <Button
-                  isLoading={isLoading}
-                  disabled={input.length === 0}
-                  onClick={() => {
-                    if (!input)
-                      return postComment({
-                        postId,
-                        text: input,
-                        replyToId: comment.replyToId ?? comment.id,
-                      });
-                  }}
-                >
-                  Post
-                </Button>
-              </div>
+            <div className="mt-2 flex justify-end gap-2">
+              <Button
+                tabIndex={-1}
+                variant="subtle"
+                onClick={() => setIsReplying(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                isLoading={isLoading}
+                disabled={input.length === 0}
+                onClick={() => {
+                  if (!input) return;
+                  postComment({
+                    postId,
+                    text: input,
+                    replyToId: comment.replyToId ?? comment.id,
+                  });
+                }}
+              >
+                Post
+              </Button>
             </div>
           </div>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
     </div>
   );
 };

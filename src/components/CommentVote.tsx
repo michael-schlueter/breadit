@@ -14,13 +14,13 @@ import { Button } from "./ui/Button";
 
 type PartialVote = Pick<CommentVote, "type">;
 
-interface CommentVoteProps {
+interface CommentVotesProps {
   commentId: string;
   initialVotesAmt: number;
   initialVote?: PartialVote;
 }
 
-const CommentVote: FC<CommentVoteProps> = ({
+const CommentVotes: FC<CommentVotesProps> = ({
   commentId,
   initialVotesAmt,
   initialVote,
@@ -109,4 +109,4 @@ const CommentVote: FC<CommentVoteProps> = ({
   );
 };
 
-export default CommentVote;
+export default CommentVotes;
