@@ -100,7 +100,7 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
         onClick={() => vote("DOWN")}
         size="sm"
         variant="ghost"
-        aria-label="upvote"
+        aria-label="downvote"
       >
         <ArrowBigDown
           className={cn("h-5 w-5 text-zinc-700", {
