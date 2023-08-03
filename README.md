@@ -51,6 +51,23 @@ Live demo [_here_](https://breadit-phi-peach.vercel.app/).
 
 
 
+## Setup
+The dependencies which are necessary to run this app can be found in the package.json file.
+
+1. Clone the repo
+2. Navigate to the project folder in the terminal and install the necessary NPM dependencies
+```
+npm install
+```
+3. Create a .env file and provide values for the following environment variables: DATABASE_URL, NEXTAUTH_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, UPLOADTHING_SECRET, UPLOADTHING_APP_ID, REDIS_URL, REDIS_SECRET
+4. Run the app typing
+```
+npm run dev
+```
+in your terminal and visit localhost:3000 in your browser.
+
+
+
 ## Learnings
 - Working with components from shadcn/ui e.g. Buttons, Toast, Dropdownmenu, Avatar and customizing them with Tailwind styles
 - Using zod schemas to validate API responses
