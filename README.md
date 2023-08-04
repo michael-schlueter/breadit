@@ -86,6 +86,6 @@ The project is finished in terms of the tutorial. I may revisit this project onc
 
 
 ## Acknowledgements
-- This project is based on a [tutorial](https://www.youtube.com/watch?v=mSUKMfmLAt0) from [Josh tried coding]([https://www.youtube.com/channel/UCvGwM5woTl13I-qThI4YMCg](https://www.youtube.com/channel/UCvGwM5woTl13I-qThI4YMCg))
+- This project is based on a [tutorial](https://www.youtube.com/watch?v=mSUKMfmLAt0) from [Josh tried coding](https://www.youtube.com/channel/UCvGwM5woTl13I-qThI4YMCg)
 
 
